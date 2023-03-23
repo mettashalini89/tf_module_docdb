@@ -9,9 +9,6 @@ variable "tags" {}
 variable "storage_encrypted" {
   default = true
 }
-variable "no_of_instances" {
-  default = 1
-}
-variable "instance_class" {
-  default = "db.t3.medium"
-}
+variable "no_of_instances" {}
+
+variable "instance_class" {}
