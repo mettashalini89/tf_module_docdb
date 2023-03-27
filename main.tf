@@ -37,7 +37,7 @@ resource "aws_ssm_parameter" "docdb_url_catalogue" {
 }
 
 resource "aws_ssm_parameter" "docdb_url_user" {
-  name  = "${var.env}.docdb.catalogue"
+  name  = "${var.env}.docdb.user"
   type  = "String"
   value = "mongodb://${data.aws_ssm_parameter.user.value}:${data.aws_ssm_parameter.pass.value}@dev-docdb-0.c8qryy7i69fd.us-east-1.docdb.amazonaws.com:27017/users?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
 }
@@ -48,14 +48,3 @@ resource "aws_ssm_parameter" "docdb_endpoint" {
   value = aws_docdb_cluster.main.endpoint
 }
 
-resource "aws_ssm_parameter" "docdb_user" {
-  name  = "${var.env}.docdb.user"
-  type  = "String"
-  value = data.aws_ssm_parameter.user.value
-}
-
-resource "aws_ssm_parameter" "docdb_pass" {
-  name  = "${var.env}.docdb.pass"
-  type  = "String"
-  value = data.aws_ssm_parameter.pass.value
-}
